@@ -68,7 +68,7 @@ namespace AccesoDatos
             {
                 cn = new Conexion().IniciarConexion();
 
-                MySqlCommand comando = new MySqlCommand($"select * from AROS where id_aro='{idar}'", cn);
+                MySqlCommand comando = new MySqlCommand($"select * from aros where codigo='{idar}'", cn);
                 MySqlDataReader reader = comando.ExecuteReader();
 
                 String[] datos = new String[7];
@@ -109,7 +109,7 @@ namespace AccesoDatos
             {
                 cn = new Conexion().IniciarConexion();
 
-                MySqlCommand comando = new MySqlCommand($"Update AROS set estado='{esta}', color_aro='{colo}', numeros_hoyo={hoyo}, rin_aro={rina}, precio_aro={prec}, stock={stoc}  where id_aro='{idar}'", cn);
+                MySqlCommand comando = new MySqlCommand($"Update AROS set estado='{esta}', color='{colo}', hoyos={hoyo}, rin={rina}, precio={prec}, disponibles={stoc}  where codigo='{idar}'", cn);
                 comando.ExecuteNonQuery();
 
             }
@@ -131,7 +131,7 @@ namespace AccesoDatos
             {
                 cn = new Conexion().IniciarConexion();
 
-                MySqlCommand comando = new MySqlCommand($"delete from AROS where id_aro='{idar}'", cn);
+                MySqlCommand comando = new MySqlCommand($"delete from AROS where codigo='{idar}'", cn);
                 comando.ExecuteNonQuery();
 
             }
@@ -145,6 +145,7 @@ namespace AccesoDatos
                 cn.Close();
             }
         }
+
 
 
         public DataTable informe()

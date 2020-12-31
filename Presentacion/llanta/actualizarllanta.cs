@@ -14,21 +14,43 @@ namespace Presentacion
 {
     public partial class actualizarllanta : Form
     {
+
         public actualizarllanta()
         {
             InitializeComponent();
             mostrar();
         }
 
-       
-       
+
+
         private void btning_Click(object sender, EventArgs e)
         {
-            Dllantas usuario = new Dllantas();
 
-            usuario.actualizarllantas(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
-            MessageBox.Show("Registro Actualizado Correctamente");
-            mostrar();
+
+            try
+            {
+                Dllantas usuario = new Dllantas();
+
+                usuario.actualizarllantas(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
+                MessageBox.Show("Registro Actualizado Correctamente");
+
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+                mostrar();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al actualizar");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,6 +71,7 @@ namespace Presentacion
             }
         }
 
+
         private void actualizarllanta_Load(object sender, EventArgs e)
         {
 
@@ -56,19 +79,19 @@ namespace Presentacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
-                Dllantas usuario = new Dllantas();
 
-                String[] datos = new String[5];
+            Dllantas usuario = new Dllantas();
 
-                datos = usuario.buscarllantas(textBox1.Text);
+            String[] datos = new String[5];
 
-                textBox1.Text = datos[0];
-                textBox2.Text = datos[1];
-                textBox3.Text = datos[2];
-                textBox4.Text = datos[3];
-                textBox5.Text = datos[4];
-           
+            datos = usuario.buscarllantas(textBox1.Text);
+
+            textBox1.Text = datos[0];
+            textBox2.Text = datos[1];
+            textBox3.Text = datos[2];
+            textBox4.Text = datos[3];
+            textBox5.Text = datos[4];
+
         }
     }
 }

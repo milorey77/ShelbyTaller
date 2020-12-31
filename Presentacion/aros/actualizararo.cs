@@ -14,6 +14,7 @@ namespace Presentacion.aros
 {
     public partial class actualizararo : Form
     {
+
         public actualizararo()
         {
             InitializeComponent();
@@ -22,11 +23,32 @@ namespace Presentacion.aros
 
         private void btning_Click(object sender, EventArgs e)
         {
-            Daros aros = new Daros();
+            try
+            {
+                Daros aros = new Daros();
 
-           aros.actualizararos(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
-            MessageBox.Show("Registro Actualizado Correctamente");
-            mostrar();
+                aros.actualizararos(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
+                MessageBox.Show("Registro Actualizado Correctamente");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+                mostrar();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al actualizar");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+            }
         }
         void mostrar()
         {
@@ -65,5 +87,6 @@ namespace Presentacion.aros
         {
 
         }
+
     }
 }

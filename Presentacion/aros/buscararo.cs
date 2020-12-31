@@ -14,6 +14,7 @@ namespace Presentacion.aros
 {
     public partial class buscararo : Form
     {
+
         public buscararo()
         {
             InitializeComponent();
@@ -58,12 +59,36 @@ namespace Presentacion.aros
 
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
-            Daros aros = new Daros();
-            aros.eliminararos(textBox1.Text);
-            MessageBox.Show("Registro Eliminado Correctamente");
-            mostrar();
+            try
+            {
+                Daros aros = new Daros();
+                aros.eliminararos(textBox1.Text);
+                MessageBox.Show("Registro Eliminado Correctamente");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+                mostrar();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al eliminar");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+
+            }
         }
     }
 }

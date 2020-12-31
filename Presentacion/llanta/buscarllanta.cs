@@ -14,13 +14,14 @@ namespace Presentacion
 {
     public partial class buscarllanta : Form
     {
+
         public buscarllanta()
         {
             InitializeComponent();
             mostrar();
         }
-       
-      
+
+
 
         private void btning_Click(object sender, EventArgs e)
         {
@@ -35,7 +36,7 @@ namespace Presentacion
             textBox3.Text = datos[2];
             textBox4.Text = datos[3];
             textBox5.Text = datos[4];
-           
+
 
         }
 
@@ -46,10 +47,27 @@ namespace Presentacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Dllantas usuario = new Dllantas();
-            usuario.eliminarllantas(textBox1.Text);
-            MessageBox.Show("Registro Eliminado Correctamente");
-            mostrar();
+            try
+            {
+                Dllantas usuario = new Dllantas();
+                usuario.eliminarllantas(textBox1.Text);
+                MessageBox.Show("Registro Eliminado Correctamente");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+                mostrar();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al eliminar");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+            }
 
         }
         private void mostrar()
@@ -65,5 +83,6 @@ namespace Presentacion
 
             }
         }
+
     }
 }

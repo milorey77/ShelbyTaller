@@ -14,6 +14,7 @@ namespace Presentacion.aros
 {
     public partial class ingresararo : Form
     {
+
         public ingresararo()
         {
             InitializeComponent();
@@ -27,11 +28,36 @@ namespace Presentacion.aros
 
         private void btning_Click(object sender, EventArgs e)
         {
-            Daros aros = new Daros();
-            aros.insertararos(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
 
-            MessageBox.Show("Registro Insertado Correctamente");
-            mostrar();
+            try
+            {
+                Daros aros = new Daros();
+                aros.insertararos(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text);
+
+                MessageBox.Show("Registro Insertado Correctamente");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+                mostrar();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al insertar");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
+                textBox7.Text = "";
+
+            }
+
         }
         void mostrar()
         {
@@ -46,6 +72,17 @@ namespace Presentacion.aros
                 MessageBox.Show("" + ex);
 
             }
+
+        }
+
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
 
         }
     }

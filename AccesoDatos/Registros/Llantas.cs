@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-   public class Llantas
+    public class Llantas
     {
         MySqlConnection cn;
 
@@ -68,7 +68,7 @@ namespace AccesoDatos
             {
                 cn = new Conexion().IniciarConexion();
 
-                MySqlCommand comando = new MySqlCommand($"select * from LLANTAS where id_llanta='{idll}'", cn);
+                MySqlCommand comando = new MySqlCommand($"select * from LLANTAS where codigo='{idll}'", cn);
                 MySqlDataReader reader = comando.ExecuteReader();
 
                 String[] datos = new String[5];
@@ -82,7 +82,7 @@ namespace AccesoDatos
                         datos[2] = reader.GetString(2);
                         datos[3] = reader.GetString(3);
                         datos[4] = reader.GetString(4);
-                        
+
 
                     }
 
@@ -106,7 +106,7 @@ namespace AccesoDatos
             {
                 cn = new Conexion().IniciarConexion();
 
-                MySqlCommand comando = new MySqlCommand($"Update LLANTAS set medida_llanta='{medi}', marca='{marc}', precio_llanta={prec}, stock={stoc}  where id_llanta='{idll}'", cn);
+                MySqlCommand comando = new MySqlCommand($"Update LLANTAS set medida='{medi}', marca='{marc}', precio={prec}, disponibles={stoc}  where codigo='{idll}'", cn);
                 comando.ExecuteNonQuery();
 
             }
@@ -128,7 +128,7 @@ namespace AccesoDatos
             {
                 cn = new Conexion().IniciarConexion();
 
-                MySqlCommand comando = new MySqlCommand($"delete from LLANTAS where id_llanta='{idll}'", cn);
+                MySqlCommand comando = new MySqlCommand($"delete from LLANTAS where codigo='{idll}'", cn);
                 comando.ExecuteNonQuery();
 
             }

@@ -14,22 +14,62 @@ namespace Presentacion
 {
     public partial class Ingresarllanta : Form
     {
-        
+        public class Conexion
+        {
+            private MySqlConnection conexion = new MySqlConnection();
+
+            public MySqlConnection IniciarConexion()
+            {
+                try
+                {
+                    String con = "Server=127.0.0.1; Database=taller; Uid=root; Pwd=";
+                    conexion.ConnectionString = con;
+                    conexion.Open();
+
+                    return conexion;
+                }
+                catch (MySqlException ex)
+                {
+                    return null;
+                    Console.WriteLine("" + ex);
+                }
+            }
+        }
+
         public Ingresarllanta()
         {
             InitializeComponent();
             mostrar();
         }
-        
-        
+
+
         private void btning_Click(object sender, EventArgs e)
         {
-            Dllantas llantas = new Dllantas();
-            llantas.insertarllantas(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
 
-            MessageBox.Show("Registro Insertado Correctamente");
-            mostrar();
-           
+            try
+            {
+                Dllantas llantas = new Dllantas();
+                llantas.insertarllantas(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
+
+                MessageBox.Show("Registro Insertado Correctamente");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+                mostrar();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al insertar");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+            }
+
         }
         void mostrar()
         {
@@ -46,6 +86,7 @@ namespace Presentacion
             }
 
         }
+
         private void l1_Click(object sender, EventArgs e)
         {
 
@@ -93,17 +134,17 @@ namespace Presentacion
 
         private void Ingresarllanta_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
 
-           
+
+
 
         }
-       
+
 
         private void textBox4_TextChanged_1(object sender, EventArgs e)
         {
